@@ -3,7 +3,7 @@
 #include <iostream>
 #include <sstream>
 #include <fstream>
-//#include <SOIL.h>
+#include <SOIL.h>
 
 ResourceManager::ResourceManager()
 {
@@ -93,17 +93,17 @@ Texture2D ResourceManager::loadTextureFromFile(const GLchar * file, GLboolean al
 {
 	// Create Texture object
 	Texture2D texture;
-	//if (alpha)
-	//{
-	//	texture.Internal_Format = GL_RGBA;
-	//	texture.Image_Format = GL_RGBA;
-	//}
-	//// Load image
-	//int width, height;
-	//unsigned char* image = SOIL_load_image(file, &width, &height, 0, texture.Image_Format == GL_RGBA ? SOIL_LOAD_RGBA : SOIL_LOAD_RGB);
-	//// Now generate texture
-	//texture.Generate(width, height, image);
-	//// And finally free image data
-	//SOIL_free_image_data(image);
+	if (alpha)
+	{
+		texture.Internal_Format = GL_RGBA;
+		texture.Image_Format = GL_RGBA;
+	}
+	// Load image
+	int width, height;
+	unsigned char* image = SOIL_load_image(file, &width, &height, 0, texture.Image_Format == GL_RGBA ? SOIL_LOAD_RGBA : SOIL_LOAD_RGB);
+	// Now generate texture
+	texture.Generate(width, height, image);
+	// And finally free image data
+	SOIL_free_image_data(image);
 	return texture;
 }
