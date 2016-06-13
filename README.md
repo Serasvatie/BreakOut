@@ -1,2 +1,2 @@
 # BreakOut
-Simple Breakout in modern OpeGL
+Simple Breakout in modern OpenGL
