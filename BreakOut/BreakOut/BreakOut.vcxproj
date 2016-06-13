@@ -69,9 +69,14 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Graphics\Newest\glew-1.13.0\include\GL;C:\Graphics\Newest\glfw-3.1.2.bin.WIN64\include;C:\Graphics\Newest\gli\gli;C:\Graphics\Newest\glm\glm;$(IncludePath)</IncludePath>
-    <ExecutablePath>C:\Graphics\Newest\glfw-3.1.2.bin.WIN64\lib-vc2015;C:\Graphics\Newest\glew-1.13.0\bin\Release\x64;$(ExecutablePath)</ExecutablePath>
-    <LibraryPath>C:\Graphics\Newest\glew-1.13.0\lib\Release\x64;C:\Graphics\Newest\glfw-3.1.2.bin.WIN64\lib-vc2015;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\..\Dependencies\include\GL;..\..\Dependencies\include\GLFW;..\..\Dependencies\include\gli;..\..\Dependencies\include\glm;..\..\Dependencies\include\SOIL;$(IncludePath)</IncludePath>
+    <ExecutablePath>..\..\Dependencies\bin\x64;$(ExecutablePath)</ExecutablePath>
+    <LibraryPath>..\..\Dependencies\lib\x64;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ExecutablePath>..\..\Dependencies\bin\Win32;$(ExecutablePath)</ExecutablePath>
+    <IncludePath>..\..\Dependencies\include\GL;..\..\Dependencies\include\GLFW;..\..\Dependencies\include\gli;..\..\Dependencies\include\glm;..\..\Dependencies\include\SOIL;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\Dependencies\lib\Win32;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -79,15 +84,19 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>SOIL.lib;opengl32.lib;glfw3.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <AdditionalOptions>/D DEBUG %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>opengl32.lib;glfw3.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SOIL.lib;opengl32.lib;glfw3.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -117,7 +126,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ResourceManager.cpp" />
+    <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="Texture2D.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="Shader.h" />
+    <ClInclude Include="Texture2D.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
