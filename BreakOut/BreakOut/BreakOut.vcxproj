@@ -69,13 +69,13 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>..\..\Dependencies\include\GL;..\..\Dependencies\include\GLFW;..\..\Dependencies\include\gli;..\..\Dependencies\include\glm;..\..\Dependencies\include\SOIL;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\Dependencies\include\GL;..\..\Dependencies\include\GLFW;..\..\Dependencies\include\glm;..\..\Dependencies\include\SOIL;$(IncludePath)</IncludePath>
     <ExecutablePath>..\..\Dependencies\bin\x64;$(ExecutablePath)</ExecutablePath>
     <LibraryPath>..\..\Dependencies\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ExecutablePath>..\..\Dependencies\bin\Win32;$(ExecutablePath)</ExecutablePath>
-    <IncludePath>..\..\Dependencies\include\GL;..\..\Dependencies\include\GLFW;..\..\Dependencies\include\gli;..\..\Dependencies\include\glm;..\..\Dependencies\include\SOIL;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\Dependencies\include\GL;..\..\Dependencies\include\GLFW;..\..\Dependencies\include\glm;..\..\Dependencies\include\SOIL;$(IncludePath)</IncludePath>
     <LibraryPath>..\..\Dependencies\lib\Win32;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -85,7 +85,7 @@
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>SOIL.lib;opengl32.lib;glfw3.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -96,7 +96,7 @@
       <AdditionalOptions>/D DEBUG %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>SOIL.lib;opengl32.lib;glfw3.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
