@@ -5,15 +5,8 @@
 #include <fstream>
 #include <SOIL.h>
 
-ResourceManager::ResourceManager()
-{
-}
-
-
-ResourceManager::~ResourceManager()
-{
-	Clear();
-}
+std::map<std::string, Texture2D>    ResourceManager::Textures;
+std::map<std::string, Shader>       ResourceManager::Shaders;
 
 Shader ResourceManager::LoadShader(std::string name, GLchar * vShaderFile, const GLchar * fShaderFile, const GLchar * gShaderFile)
 {

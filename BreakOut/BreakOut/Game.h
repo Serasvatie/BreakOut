@@ -7,6 +7,7 @@
 
 #include "ResourceManager.h"
 #include "SpriteRender.h"
+#include "GameLevel.h"
 
 typedef enum gameState
 {
@@ -24,9 +25,11 @@ public:
 	GameState	State;
 	GLboolean	Keys[1024];
 	GLuint64	Width, Height;
-	ResourceManager *resourceManager;
 	SpriteRender *spriteRender;
 	
+	std::vector<GameLevel> Levels;
+	GLuint		Level;
+
 	void		Init();
 	void		ProcessInput(GLfloat deltaTime);
 	void		Update(GLfloat deltaTime);

@@ -19,12 +19,21 @@
     <Filter Include="Fichiers sources\Utility">
       <UniqueIdentifier>{ce6c27b4-4b35-4f45-a08d-c9272fd6d42b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers sources\Core">
+      <UniqueIdentifier>{4154b733-e641-4d4e-b74e-71ac18a492fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Core">
+      <UniqueIdentifier>{ea38443c-3049-4142-858e-500eb10df79b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers de ressources\img">
+      <UniqueIdentifier>{af3b7d2b-87fd-4931-b3c2-5cb747691372}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers de ressources\Levels">
+      <UniqueIdentifier>{91958df8-3907-4c93-bfbf-994cf9ddabd7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Game.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="Shader.cpp">
@@ -39,11 +48,17 @@
     <ClCompile Include="SpriteRender.cpp">
       <Filter>Fichiers sources\Utility</Filter>
     </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Fichiers sources\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Fichiers sources\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLevel.cpp">
+      <Filter>Fichiers sources\Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Game.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="Shader.h">
       <Filter>Fichiers d%27en-tête\Utility</Filter>
     </ClInclude>
@@ -56,6 +71,15 @@
     <ClInclude Include="SpriteRender.h">
       <Filter>Fichiers d%27en-tête\Utility</Filter>
     </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Fichiers d%27en-tête\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Fichiers d%27en-tête\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLevel.h">
+      <Filter>Fichiers d%27en-tête\Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="sprite.frag">
@@ -64,10 +88,28 @@
     <None Include="sprite.vert">
       <Filter>Fichiers de ressources</Filter>
     </None>
+    <None Include="Levels\Level1">
+      <Filter>Fichiers de ressources\Levels</Filter>
+    </None>
+    <None Include="Levels\Level2">
+      <Filter>Fichiers de ressources\Levels</Filter>
+    </None>
+    <None Include="Levels\Level3">
+      <Filter>Fichiers de ressources\Levels</Filter>
+    </None>
+    <None Include="Levels\Level4">
+      <Filter>Fichiers de ressources\Levels</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="awesomeface.png">
-      <Filter>Fichiers de ressources</Filter>
+    <Image Include="img\block_solid.png">
+      <Filter>Fichiers de ressources\img</Filter>
+    </Image>
+    <Image Include="img\background.jpg">
+      <Filter>Fichiers de ressources\img</Filter>
+    </Image>
+    <Image Include="img\block.png">
+      <Filter>Fichiers de ressources\img</Filter>
     </Image>
   </ItemGroup>
 </Project>
