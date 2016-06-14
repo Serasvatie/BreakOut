@@ -14,6 +14,8 @@ void Texture2D::Bind()
 	glBindTexture(GL_TEXTURE_2D, ID);
 }
 
+#include <iostream>
+
 void Texture2D::Generate(GLuint width, GLuint heigth, unsigned char * data)
 {
 	Width = width;

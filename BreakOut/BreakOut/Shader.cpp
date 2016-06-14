@@ -2,14 +2,7 @@
 
 Shader & Shader::Use()
 {
-	if (initialised)
-		glUseProgram(ID);
-	else
-	{
-		std::string msg = "Shader program " + ID;
-		msg += " not initialised - aborting.";
-		throw std::runtime_error(msg);
-	}
+	glUseProgram(ID);
 	return *this;
 }
 

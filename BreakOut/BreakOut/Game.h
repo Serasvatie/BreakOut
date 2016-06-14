@@ -5,6 +5,9 @@
 #include <glew.h>
 #include <glfw3.h>
 
+#include "ResourceManager.h"
+#include "SpriteRender.h"
+
 typedef enum gameState
 {
 	GAME_ACTIVE,
@@ -21,6 +24,8 @@ public:
 	GameState	State;
 	GLboolean	Keys[1024];
 	GLuint64	Width, Height;
+	ResourceManager *resourceManager;
+	SpriteRender *spriteRender;
 	
 	void		Init();
 	void		ProcessInput(GLfloat deltaTime);
