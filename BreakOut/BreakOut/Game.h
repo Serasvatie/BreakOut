@@ -17,6 +17,16 @@ typedef enum gameState
 	GAME_WIN
 } GameState;
 
+enum Direction
+{
+	UP,
+	RIGHT,
+	DOWN,
+	LEFT
+};
+
+typedef std::tuple<GLboolean, Direction, glm::vec2> Collision;
+
 #define PLAYER_SIZE_X 100
 #define PLAYER_SIZE_Y 20
 #define PLAYER_VELOCITY 500.0f
@@ -43,6 +53,12 @@ public:
 	void		ProcessInput(GLfloat deltaTime);
 	void		Update(GLfloat deltaTime);
 	void		Render();
+	void		ResetLevel();
+	void		ResetPlayer();
+	GLboolean	CheckCollision(GameObject &one, GameObject &two);
+	Collision	CheckCollision(BallObject &one, GameObject &two);
+	void		DoCollision();
+	Direction	VectorDirection(glm::vec2 target);
 };
 
 #endif
