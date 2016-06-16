@@ -131,6 +131,7 @@
     <ClCompile Include="GameLevel.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ParticleGenerator.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="SpriteRender.cpp" />
@@ -141,6 +142,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameLevel.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="ParticleGenerator.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="SpriteRender.h" />
@@ -151,6 +153,8 @@
     <None Include="Levels\Level2" />
     <None Include="Levels\Level3" />
     <None Include="Levels\Level4" />
+    <None Include="particle.frag" />
+    <None Include="particle.vert" />
     <None Include="sprite.frag" />
     <None Include="sprite.vert" />
   </ItemGroup>

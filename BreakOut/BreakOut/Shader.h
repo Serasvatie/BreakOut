@@ -51,6 +51,7 @@ private:
 	bool initialised;
 
 	void		checkCompileErrors(GLuint object, std::string type);
+	GLuint		GetLocation(const GLchar *name);
 };
 
 #endif

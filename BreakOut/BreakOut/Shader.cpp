@@ -52,77 +52,77 @@ void Shader::SetFloat(const GLchar * name, GLfloat value, GLboolean useShader)
 {
 	if (useShader)
 		this->Use();
-	glUniform1f(glGetUniformLocation(ID, name), value);
+	glUniform1f(GetLocation(name), value);
 }
 
 void Shader::SetBoolean(const GLchar * name, GLboolean value, GLboolean useShader)
 {
 	if (useShader)
 		this->Use();
-	glUniform1d(glGetUniformLocation(ID, name), value);
+	glUniform1d(GetLocation(name), value);
 }
 
 void Shader::SetInteger(const GLchar * name, GLint value, GLboolean useShader)
 {
 	if (useShader)
 		this->Use();
-	glUniform1i(glGetUniformLocation(ID, name), value);
+	glUniform1i(GetLocation(name), value);
 }
 
 void Shader::SetVector2f(const GLchar * name, GLfloat x, GLfloat y, GLboolean useShader)
 {
 	if (useShader)
 		this->Use();
-	glUniform2f(glGetUniformLocation(ID, name), x, y);
+	glUniform2f(GetLocation(name), x, y);
 }
 
 void Shader::SetVector2f(const GLchar * name, glm::vec2 & vec, GLboolean useShader)
 {
 	if (useShader)
 		this->Use();
-	glUniform2f(glGetUniformLocation(ID, name), vec.x, vec.y);
+	glUniform2f(GetLocation(name), vec.x, vec.y);
 }
 
 void Shader::SetVector3f(const GLchar * name, GLfloat x, GLfloat y, GLfloat z, GLboolean useShader)
 {
 	if (useShader)
 		this->Use();
-	glUniform3f(glGetUniformLocation(ID, name), x, y, z);
+	glUniform3f(GetLocation(name), x, y, z);
 }
 
 void Shader::SetVector3f(const GLchar * name, glm::vec3 & vec, GLboolean useShader)
 {
 	if (useShader)
 		this->Use();
-	glUniform3f(glGetUniformLocation(ID, name), vec.x, vec.y, vec.z);
+	glUniform3f(GetLocation(name), vec.x, vec.y, vec.z);
 }
 
 void Shader::SetVector4f(const GLchar * name, GLfloat x, GLfloat y, GLfloat z, GLfloat w, GLboolean useShader)
 {
 	if (useShader)
 		this->Use();
-	glUniform4f(glGetUniformLocation(ID, name), x, y, z, w);
+	glUniform4f(GetLocation(name), x, y, z, w);
 }
 
 void Shader::SetVector4f(const GLchar * name, glm::vec4 & vec, GLboolean useShader)
 {
 	if (useShader)
 		this->Use();
-	glUniform4f(glGetUniformLocation(ID, name), vec.x, vec.y, vec.z, vec.w);
+	glUniform4f(GetLocation(name), vec.x, vec.y, vec.z, vec.w);
 }
 
 void Shader::SetMatrix3f(const GLchar * name, glm::mat3 & mat, GLboolean useShader)
 {
 	if (useShader)
 		this->Use();
-	glUniformMatrix3fv(glGetUniformLocation(ID, name), 1, GL_FALSE, glm::value_ptr(mat));
+	glUniformMatrix3fv(GetLocation(name), 1, GL_FALSE, glm::value_ptr(mat));
 }
 
 void Shader::SetMatrix4f(const GLchar * name, glm::mat4 & mat, GLboolean useShader)
 {
 	if (useShader)
 		this->Use();
-	glUniformMatrix4fv(glGetUniformLocation(ID, name), 1, GL_FALSE, glm::value_ptr(mat));
+	glUniformMatrix4fv(GetLocation(name), 1, GL_FALSE, glm::value_ptr(mat));
 }
 
 GLuint Shader::Attribute(const std::string attributeName)
@@ -198,4 +198,12 @@ void Shader::checkCompileErrors(GLuint object, std::string type)
 				<< std::endl;
 		}
 	}
+}
+
+GLuint Shader::GetLocation(const GLchar * name)
+{
+	int ret = glGetUniformLocation(ID, name);
+	if (ret < 0)
+		std::cout << "Could not find Uniform Location : " + std::string(name) << std::endl;
+	return ret;
 }

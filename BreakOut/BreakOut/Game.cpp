@@ -1,7 +1,9 @@
 #include "Game.h"
+#include "ParticleGenerator.h"
 
 GameObject	*Player;
 BallObject	*Ball;
+ParticleGenerator * Particles;
 
 Game::Game(GLuint64 width, GLuint64 height)
 	: State(GAME_ACTIVE), Keys(), Width(width), Height(height)
@@ -15,17 +17,23 @@ Game::~Game()
 void Game::Init()
 {
 	ResourceManager::LoadShader("sprite", "sprite.vert", "sprite.frag");
+	ResourceManager::LoadShader("particle", "particle.vert", "particle.frag");
+
 	glm::mat4 projection = glm::ortho(0.0f, static_cast<GLfloat>(Width), static_cast<GLfloat>(Height), 0.0f, -1.0f, 1.0f);
 	ResourceManager::GetShader("sprite").Use().SetInteger("Image", 0);
 	ResourceManager::GetShader("sprite").SetMatrix4f("Projection", projection);
+	ResourceManager::GetShader("particle").Use().SetInteger("Sprite", 0);
+	ResourceManager::GetShader("particle").Use().SetMatrix4f("Projection", projection);
 
 	ResourceManager::LoadTexture("img/background.jpg", GL_FALSE, "background");
 	ResourceManager::LoadTexture("img/block.png", GL_FALSE, "block");
 	ResourceManager::LoadTexture("img/block_solid.png", GL_FALSE, "block_solid");
 	ResourceManager::LoadTexture("img/paddle.png", GL_TRUE, "paddle");
 	ResourceManager::LoadTexture("img/ball.png", GL_TRUE, "ball");
+	ResourceManager::LoadTexture("img/particle.png", GL_TRUE, "particle");
 
 	spriteRender = new SpriteRender(ResourceManager::GetShader("sprite"));
+	Particles = new ParticleGenerator(ResourceManager::GetShader("particle"), ResourceManager::GetTexture("particle"), 500);
 
 	GameLevel one; one.Load("levels/Level1", Width, Height * 0.5);
 	GameLevel two; two.Load("levels/Level2", Width, Height * 0.5);
@@ -67,6 +75,7 @@ void Game::Update(GLfloat deltaTime)
 {
 	Ball->Move(deltaTime, Width);
 	DoCollision();
+	Particles->Update(deltaTime, *Ball, 2, glm::vec2(Ball->Radius / 2));
 	if (Ball->Position.y >= Height)
 	{
 		ResetLevel();
@@ -85,6 +94,7 @@ void Game::Render()
 		spriteRender->DrawSprite(ResourceManager::GetTexture("background"), glm::vec2(0, 0), glm::vec2(Width, Height), 0.0f);
 		Levels[Level].Draw(*spriteRender);
 		Player->Draw(*spriteRender);
+		Particles->Draw();
 		Ball->Draw(*spriteRender);
 	}
 }
@@ -185,7 +195,7 @@ void Game::DoCollision()
 		GLfloat distance = (Ball->Position.x + Ball->Radius) - centerBoard;
 		GLfloat percentage = distance / (Player->Position.x / 2);
 	
-		GLfloat strength = 10.f;
+		GLfloat strength = 20.f;
 		glm::vec2 oldVelocity = Ball->Velocity;
 		Ball->Velocity.x = BALL_VELOCITY_X * percentage * strength;
 		Ball->Velocity.y = -Ball->Velocity.y;
